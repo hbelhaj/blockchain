@@ -1,4 +1,6 @@
 
+
+We will use Flask for the rest service
 #we will store JSON values 
 #this data is what we will call transaction
 
