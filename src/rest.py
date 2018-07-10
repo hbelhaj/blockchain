@@ -55,7 +55,7 @@ def register_new_peers():
 @app.route('/add_block',methods=['POST'])
 def validate_and_add_block():
     block_data = request.get_json()
-    block = Block(block_data["index"], block_data["transactions"],block_data["timestamp"], block_data["previous_hash"]])
+    block = Block(block_data["index"], block_data["transactions"],block_data["timestamp"], block_data["previous_hash"])
     proof = block_data['hash']
     added = blockchain.add_block(block,proof)
 
