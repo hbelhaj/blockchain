@@ -1,5 +1,7 @@
 from flask import Flask, request
 import requests
+from blockchain.blockchain import *
+from blockchain.block import *
 
 app = Flask(__name__)
 blockchain = Blockchain()
@@ -28,10 +30,13 @@ def mine_unconfirmed_transactions():
     result = blockchain.mine()
     if not result:
         return "No transactions to mine"
-    return "Block #{} is mined." .format(result)
+    return "Block #{} is mined.".format(result)
+
 @app.route('/pending_tx')
 def get_pending_tx():
     return json.dumps(blockchain.unconfirmed_transactions) 
 
-
-app.run(debug=True, port=8000)
+@app.route('/last')
+def get_last():
+    return json.dumps(blockchain.last_block().index)
+app.run(debug=True, port=8080)

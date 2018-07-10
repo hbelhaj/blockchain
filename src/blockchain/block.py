@@ -2,12 +2,12 @@ from hashlib import sha256
 import json
 import time
 class Block:
-    def __init__(self, index, transactions, timestamp, previous_hash):
-        self.index = []
+    def __init__(self,index, transactions, timestamp, previous_hash):
+        self.index = index
         self.transactions = transactions
         self.timestamp = timestamp
         self.previous_hash = previous_hash
-    def compute_hash(block):
+    def compute_hash(self):
         """ this function will calculate the hash for the block 
         normally in a blockchain we need to hash every single 
         transaction , since this is a first try we will try to keep 
